@@ -8,9 +8,7 @@ export default function CalculatorBody({
   operation,
   dispatch,
   formatOperand
-}) 
-{
-  
+}) {
   return (
     <div className="calculator_grid_container">
       <div className="calculator_grid">
@@ -48,7 +46,9 @@ export default function CalculatorBody({
         <DigitButton digit="." dispatch={dispatch} />
         <DigitButton digit="0" dispatch={dispatch} />
 
-        <button className="span_two" onClick={() => dispatch({ type: ACTION.EVALUATE })}>
+        <OperationButton dispatch={dispatch} operation="%" />
+        
+        <button  onClick={() => dispatch({ type: ACTION.EVALUATE })}>
           =
         </button>
       </div>

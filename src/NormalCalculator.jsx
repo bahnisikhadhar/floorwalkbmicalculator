@@ -6,7 +6,8 @@ export const ACTION = {
     CHOOSE_OPERATION: 'choose-operation',
     CLEAR: 'clear',
     DELETE_DIGIT: 'delete-digit',
-    EVALUATE: 'evaluate'
+    EVALUATE: 'evaluate',
+    PERCENT: 'percent',
 };
 
 function reducer(state, { type, payload }) {
@@ -86,13 +87,19 @@ function reducer(state, { type, payload }) {
             ) {
                 return state;
             }
-
+          
             return {
                 ...state,
                 overwrite: true,
                 previousOperand: null,
                 operation: null,
                 currentOperand: evaluate(state)
+            };
+        case ACTION.PERCENT:
+            // if (state.currentOperand == null) return state;
+            return {
+                ...state,
+                currentOperand: evaluate({ currentOperand, previousOperand: '0', operation: '%' })
             };
     }
 }
@@ -117,6 +124,10 @@ function evaluate({ currentOperand, previousOperand, operation }) {
             break;
         case '÷':
             computation = prev / current;
+
+            break;
+        case '%':
+           computation = prev / 100 * current;
 
             break;
     }
