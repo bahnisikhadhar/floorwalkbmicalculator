@@ -7,7 +7,6 @@
   display: flex;
   justify-content: space-between;
   margin: 2rem;
-  height: 100vh;
 }
 
 /*------------------------------------------CALCULATOR------------------------------------------------ */
@@ -87,7 +86,7 @@
   box-shadow: 0px 0px 5px black;
   padding: 1rem;
   position: relative;
-  height: 30vh;
+  /* height: 30vh; */
   margin-bottom: 2rem;
 }
 .bmi_container form input{
